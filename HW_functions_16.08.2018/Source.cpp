@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+﻿//#include "stdafx.h"
 #include <iostream>
 #include <iomanip>
 #include<math.h>
@@ -41,7 +41,7 @@ void plusminus(type arr[], int size) {
 	}
 	cout << "- elements: " << k1 << endl;
 	cout << "+ elements: " << k2 << endl;
-	cout << "zeroes: " << k3 << endl << endl;
+	cout << "zeros: " << k3 << endl << endl;
 }
 
 //4.	Написать шаблонную функцию, определяющую минимум и максимум(значение и номер)
@@ -83,15 +83,18 @@ void reverse_arr(type arr[], int size) {
 //6.	Написать функцию, возвращающую количество простых чисел в передаваемом ей массиве.
 void count_prime(int arr[], int size) {
 	int count = 0;
-	bool prime = true;
-
-	for (int i = 0, j = 2; j < arr[i]; j++)
+	
+	for (int i = 0; i < size; i++)
 	{
-		if (arr[i] <= j) continue;
-		if (arr[i] % j == 0)
+		bool prime = true;
+		if (arr[i] < 2) prime = false;
+		for (int j = 2; j < arr[i]; j++)
 		{
-			prime = false;
-			break;
+			if (arr[i] % j == 0)
+			{
+				prime = false;
+				break;
+			}
 		}
 		if (prime == true)
 		{
@@ -99,8 +102,8 @@ void count_prime(int arr[], int size) {
 			cout << arr[i] << " ";
 		}
 	}
-	cout << count << endl << endl;
-}
+	cout << endl << count << " prime numbers" << endl << endl;
+	}
 
 
 
@@ -169,7 +172,6 @@ int main()
 
 			count_prime(a, 21);
 		}
-		break;
 		break;
 		default:
 			cout << "нет такой задачи" << endl << endl;
